@@ -18,6 +18,8 @@ MainWindow::MainWindow(QWidget *parent)
     ui->tableWidget->setRowCount(10);
     ui->tableWidget->setHorizontalHeaderLabels(QStringList() << "Процесс" << "info1" << "info2" << "info3" << "info4");
     ui->tableWidget->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+
+    //Example how to fill table with data
     int count = 1;
     for(int i = 0; i < ui->tableWidget->rowCount(); ++i) {
         for(int j = 0; j < ui->tableWidget->columnCount(); ++j) {
@@ -74,9 +76,9 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+//If cell in the main table was double clicked, create a new table with additional info
 void MainWindow::on_tableWidget_cellDoubleClicked(int row, int column)
 {
-
     ui->processTableWidget->setVisible(true);
     ui->processTableWidget->setRowCount(1);
     ui->processTableWidget->setColumnCount(3);
@@ -88,6 +90,7 @@ void MainWindow::on_tableWidget_cellDoubleClicked(int row, int column)
 
 void MainWindow::on_treeWidget_itemSelectionChanged()
 {
+    //This show how to get content of selected item
     ui->treeWidgetSelectedItem->setVisible(true);
     ui->treeWidgetSelectedItem->setText(ui->treeWidget->currentItem()->text(0) + "<br>" +
                                         ui->treeWidget->currentItem()->text(1) + "<br>" +
